@@ -1,4 +1,6 @@
-# CSV parser and writer for Node.js
+# ya-csv
+
+Event based CSV parser and writer for Node.js suitable for processing large CSV streams.
 
 ## Example
 
