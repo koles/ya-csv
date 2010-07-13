@@ -4,8 +4,21 @@ Event based CSV parser and writer for Node.js suitable for processing large CSV 
 
 ## Example
 
+A simple echo program:
+
+    var csvIn = csv.createCsvFileReader(process.openStdin());
+    var csvOut = new csv.CsvWriter(process.stdout);
+    csvIn.addListener('data', function(data) {
+        csvOut.writeRecord(data);
+    });
+    csvIn.addListener('end', function() {
+        sys.debug('Done');
+    });
+
+Echo first column of the `data.csv` file:
+
     // equivalent of csv.createCsvFileReader('data.csv') 
-    var csvIn = csv.createCsvFileReader(file, {
+    var csvIn = csv.createCsvFileReader('data.csv', {
         'separator': ',',
         'quote': '"',
         'escapechar': '"',       
@@ -13,9 +26,6 @@ Event based CSV parser and writer for Node.js suitable for processing large CSV 
     });
     var csvOut = new csv.CsvWriter(process.stdout);
     csvIn.addListener('data', function(data) {
-        csvOut.writeRecord(data);
-    });
-    csvIn.addListener('end', function() {
-        sys.debug('Done');
+        csvOut.writeRecord([ data[0] ]);
     });
 
