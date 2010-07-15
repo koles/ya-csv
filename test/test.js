@@ -11,7 +11,8 @@ if (process.argv.length < 3) {
 var file = process.argv[2];
 
 var csvIn = csv.createCsvFileReader(file, {
-    'separator': ':',
+    'separator': ',',
+    'quote':   '"',
     'comment': '#',
 });
 var csvOut = new csv.CsvWriter(process.stdout);
