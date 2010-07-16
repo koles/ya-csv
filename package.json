@@ -1,5 +1,5 @@
 {
-  "name": "csv",
+  "name": "ya-csv",
   "description": "CSV parser and generator for Node.js",
   "version": "0.1.0",
   "keywords": [ "node", "csv", "parser" ],
@@ -13,6 +13,5 @@
   "directories": { "lib": "./lib", "test": "./test" },
   "os": [ "linux", "darwin" ],
   "dependencies": {},
-  "engines": { "node":  ">0.1.99" },
-  "main": "./ya-csv"
+  "engines": { "node":  ">=0.1.99" }
 }
