@@ -2,17 +2,14 @@
 
 Event based CSV parser and writer for Node.js suitable for processing large CSV streams.
 
-## Example
+## Examples
 
 A simple echo program:
 
-    var csvIn = csv.createCsvFileReader(process.openStdin());
-    var csvOut = new csv.CsvWriter(process.stdout);
+    var csvIn = csv.createCsvStreamReader(process.openStdin());
+    var csvOut = csv.createCsvStreamWriter(process.stdout);
     csvIn.addListener('data', function(data) {
         csvOut.writeRecord(data);
-    });
-    csvIn.addListener('end', function() {
-        sys.debug('Done');
     });
 
 Echo first column of the `data.csv` file:
@@ -29,3 +26,15 @@ Echo first column of the `data.csv` file:
         csvOut.writeRecord([ data[0] ]);
     });
 
+Convert the `/etc/passwd` file to comma separated format, drop commented lines and dump the results to the standard output:
+
+    var csvIn = csv.createCsvFileReader('/etc/passwd', {
+        'separator': ':',
+        'quote': '"',
+        'escapechar': '"',       
+        'comment': '#',
+    });
+    var csvOut = new csv.CsvWriter(process.stdout);
+    csvIn.addListener('data', function(data) {
+        csvOut.writeRecord([ data[0] ]);
+    });
