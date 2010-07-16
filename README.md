@@ -2,15 +2,24 @@
 
 Event based CSV parser and writer for Node.js suitable for processing large CSV streams.
 
-## Examples
-
-A simple echo program:
-
+    // A simple echo program:
     var csvIn = csv.createCsvStreamReader(process.openStdin());
     var csvOut = csv.createCsvStreamWriter(process.stdout);
     csvIn.addListener('data', function(data) {
         csvOut.writeRecord(data);
     });
+
+## Installation
+
+    npm install ya-csv
+
+## Features
+
+ - event based, suitable for big CSV streams
+ - configurable separator, quote and escape characters (comma, quote and quote by default)
+ - ignores lines that are commented out if a comment character is specified (empty by default)
+
+## More examples
 
 Echo first column of the `data.csv` file:
 
