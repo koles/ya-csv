@@ -3,8 +3,11 @@
 Event based CSV parser and writer for Node.js suitable for processing large CSV streams.
 
     // A simple echo program:
+    var csv = require('ya-csv');
+
     var csvIn = csv.createCsvStreamReader(process.openStdin());
     var csvOut = csv.createCsvStreamWriter(process.stdout);
+
     csvIn.addListener('data', function(data) {
         csvOut.writeRecord(data);
     });
