@@ -18,9 +18,9 @@ Event based CSV parser and writer for Node.js suitable for processing large CSV 
 
 ## Features
 
- - event based, suitable for big CSV streams
- - configurable separator, quote and escape characters (comma, quote and quote by default)
- - ignores lines that are commented out if a comment character is specified (empty by default)
+ - event based, suitable for processing big CSV streams
+ - configurable separator, quote and escape characters (comma, double-quote and double-quote by default)
+- ignores lines starting with configurable comment character (off by default)
 
 ## More examples
 
