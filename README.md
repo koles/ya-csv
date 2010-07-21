@@ -5,11 +5,11 @@ Event based CSV parser and writer for Node.js suitable for processing large CSV 
     // A simple echo program:
     var csv = require('ya-csv');
 
-    var csvIn = csv.createCsvStreamReader(process.openStdin());
-    var csvOut = csv.createCsvStreamWriter(process.stdout);
+    var reader = csv.createCsvStreamReader(process.openStdin());
+    var writer = csv.createCsvStreamWriter(process.stdout);
 
-    csvIn.addListener('data', function(data) {
-        csvOut.writeRecord(data);
+    reader.addListener('data', function(data) {
+        writer.writeRecord(data);
     });
 
 ## Installation
@@ -29,26 +29,26 @@ Current version requires at least Node.js v0.1.99 and it's tested with Node.js v
 Echo first column of the `data.csv` file:
 
     // equivalent of csv.createCsvFileReader('data.csv') 
-    var csvIn = csv.createCsvFileReader('data.csv', {
+    var reader = csv.createCsvFileReader('data.csv', {
         'separator': ',',
         'quote': '"',
         'escapechar': '"',       
         'comment': '',
     });
-    var csvOut = new csv.CsvWriter(process.stdout);
-    csvIn.addListener('data', function(data) {
-        csvOut.writeRecord([ data[0] ]);
+    var writer = new csv.CsvWriter(process.stdout);
+    reader.addListener('data', function(data) {
+        writer.writeRecord([ data[0] ]);
     });
 
 Convert the `/etc/passwd` file to comma separated format, drop commented lines and dump the results to the standard output:
 
-    var csvIn = csv.createCsvFileReader('/etc/passwd', {
+    var reader = csv.createCsvFileReader('/etc/passwd', {
         'separator': ':',
         'quote': '"',
         'escapechar': '"',       
         'comment': '#',
     });
-    var csvOut = new csv.CsvWriter(process.stdout);
-    csvIn.addListener('data', function(data) {
-        csvOut.writeRecord([ data[0] ]);
+    var writer = new csv.CsvWriter(process.stdout);
+    reader.addListener('data', function(data) {
+        writer.writeRecord(data);
     });
