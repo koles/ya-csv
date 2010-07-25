@@ -40,6 +40,24 @@ Echo first column of the `data.csv` file:
         writer.writeRecord([ data[0] ]);
     });
 
+Return data in objects rather than arrays: either by grabbing the column names form the header row (first row is not passed to the `data` listener):
+
+    var reader = csv.createCsvFileReader('data.csv', { columnsFromHeader: true });
+    reader.addListener('data', function(data) {
+        // supposing there are so named columns in the source file
+        sys.puts(data.col1 + " ... " + data.col2);
+    });
+
+... or by providing column names from the client code (first row is passed to the `data` listener in this case):
+
+    var reader = csv.createCsvFileReader('data.csv');
+    reader.setColumnNames([ 'col1', 'col2' ]);
+    reader.addListener('data', function(data) {
+        sys.puts(data.col1 + " ... " + data.col2);
+    });
+
+Note `reader.setColumnNames()` resets the column names so next invocation of the `data` listener will again receive the data in an array rather than an object.
+
 Convert the `/etc/passwd` file to comma separated format, drop commented lines and dump the results to the standard output:
 
     var reader = csv.createCsvFileReader('/etc/passwd', {
