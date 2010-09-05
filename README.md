@@ -16,7 +16,7 @@ Event based CSV parser and writer for Node.js suitable for processing large CSV 
 
     npm install ya-csv
 
-Current version requires at least Node.js v0.1.99 and it's tested with Node.js v0.1.100 and v0.2.0.
+Current version requires at least Node.js v0.1.99 and it's tested with Node.js v0.1.100 and v0.2.0. Hope it works with the other version in between too.
 
 ## Features
 
