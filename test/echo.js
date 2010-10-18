@@ -15,7 +15,9 @@ var csvIn = csv.createCsvFileReader(file, {
     'quote':   '"',
     'comment': '#',
 });
-var csvOut = new csv.CsvWriter(process.stdout);
+var csvOut = new csv.CsvWriter(process.stdout, {
+    'encoding': 'utf8'        
+});
 
 var lines   = 0;
 var columns = 0;

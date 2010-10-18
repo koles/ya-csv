@@ -11,6 +11,7 @@ var csvIn = csv.createCsvFileReader(testFile, {
     'quote':   '"',
     'comment': '#',
 });
+var csvOut = csv.createCsvFileWriter('/dev/null', { 'encoding': 'utf8' });
 
 var lines   = 0;
 var columns = 0;
@@ -22,6 +23,7 @@ csvIn.addListener('end', function() {
 
 csvIn.addListener('data', function(data) {
     lines++;
+    csvOut.writeRecord(data);
     assert.strictEqual(expectedColsPerRow, data.length,
         "Wrong number of fields per record in record #" + lines);
     columns += data.length;
