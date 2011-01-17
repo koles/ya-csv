@@ -23,8 +23,9 @@ csvIn.addListener('end', function() {
 
 csvIn.addListener('data', function(data) {
     lines++;
+    data.push(1);
     csvOut.writeRecord(data);
-    assert.strictEqual(expectedColsPerRow, data.length,
+    assert.strictEqual(expectedColsPerRow + 1, data.length,
         "Wrong number of fields per record in record #" + lines);
     columns += data.length;
 });
