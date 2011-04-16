@@ -22,7 +22,8 @@ Current version requires at least Node.js v0.1.99 and it's tested with Node.js v
 
  - event based, suitable for processing big CSV streams
  - configurable separator, quote and escape characters (comma, double-quote and double-quote by default)
-- ignores lines starting with configurable comment character (off by default)
+ - ignores lines starting with configurable comment character (off by default)
+ - supports memory-only streaming
 
 ## More examples
 
@@ -70,3 +71,22 @@ Convert the `/etc/passwd` file to comma separated format, drop commented lines a
     reader.addListener('data', function(data) {
         writer.writeRecord(data);
     });
+
+Parsing an upload as the data comes in, using node-formidable:
+
+    upload_form.onPart = function(part) {
+        if (!part.filename) { upload_form.handlePart(part); return }
+
+        var reader = csv.createCsvFileReader({'comment': '#'});
+        reader.addListener('data', function(data) {
+            saveRecord(data);
+        });
+
+        part.on('data', function(buffer) {
+            // Pipe incoming data into the reader.
+            reader.parse(buffer);
+        });
+        part.on('end', function() {
+            reader.end()
+        }
+    }
