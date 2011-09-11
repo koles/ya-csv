@@ -4,7 +4,9 @@
   "version": "0.1.7",
   "keywords": [ "node", "csv", "parser" ],
   "author": "Pavel Kolesnikov <pavel.kolesnikov@gmail.com>",
-  "licenses": [ "MIT" ],
+  "licenses": [
+    { "type": "MIT", "url": "https://raw.github.com/koles/ya-csv/master/LICENSE" }
+  ],
   "repository": {
     "type": "git",
     "url": "http://github.com/koles/ya-csv"
