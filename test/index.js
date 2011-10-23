@@ -2,7 +2,7 @@ var csv    = require('../lib/ya-csv'),
     sys    = require('sys'),
     assert = require('assert');
 
-var testFile = 'test/crazy.csv';
+var testFile = __dirname + '/crazy.csv';
 var expectedRows = 7;
 var expectedColsPerRow = 4;
 
