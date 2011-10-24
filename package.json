@@ -11,7 +11,7 @@
     "type": "git",
     "url": "http://github.com/koles/ya-csv"
   },
-  "bugs": { "web": "http://github.com/koles/ya-csv/issues" },
+  "bugs": { "url": "http://github.com/koles/ya-csv/issues" },
   "directories": { "lib": "./lib", "test": "./test" },
   "bin" : { "csv-reshuffle" : "./bin/reshuffle.js" },
   "os": [ "linux", "darwin" ],
