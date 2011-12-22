@@ -33,7 +33,7 @@ Echo first column of the `data.csv` file:
     var reader = csv.createCsvFileReader('data.csv', {
         'separator': ',',
         'quote': '"',
-        'escapechar': '"',       
+        'escape': '"',       
         'comment': '',
     });
     var writer = new csv.CsvWriter(process.stdout);
@@ -64,7 +64,7 @@ Convert the `/etc/passwd` file to comma separated format, drop commented lines a
     var reader = csv.createCsvFileReader('/etc/passwd', {
         'separator': ':',
         'quote': '"',
-        'escapechar': '"',       
+        'escape': '"',       
         'comment': '#',
     });
     var writer = new csv.CsvWriter(process.stdout);
