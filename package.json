@@ -1,7 +1,7 @@
 {
   "name": "ya-csv",
   "description": "CSV parser and generator for Node.js",
-  "version": "0.1.7",
+  "version": "0.1.9",
   "keywords": [ "node", "csv", "parser" ],
   "author": "Pavel Kolesnikov <pavel.kolesnikov@gmail.com>",
   "licenses": [
