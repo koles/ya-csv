@@ -16,7 +16,7 @@ Event based CSV parser and writer for Node.js suitable for processing large CSV 
 
     npm install ya-csv
 
-Current version requires at least Node.js v0.2.3 and it's tested with Node.js v0.4.11, v0.4.12 and v0.5.0. Hope it works with the other versions in between too.
+Current version requires at least Node.js v0.2.3 and it's tested with Node.js v0.4.12, 0.6.11 and 0.7.5. Hope it works with the other versions in between too.
 
 ## Features
 
@@ -64,7 +64,7 @@ Convert the `/etc/passwd` file to comma separated format, drop commented lines a
     var reader = csv.createCsvFileReader('/etc/passwd', {
         'separator': ':',
         'quote': '"',
-        'escape': '"',       
+        'escape': '"',
         'comment': '#',
     });
     var writer = new csv.CsvWriter(process.stdout);
