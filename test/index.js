@@ -12,11 +12,13 @@ var testFile = __dirname + '/crazy.csv';
 var expectedRows = 7;
 var expectedColsPerRow = 4;
 
+var csvInNoOptions = csv.createCsvFileReader(testFile);
 var csvIn = csv.createCsvFileReader(testFile, {
     'separator': ',',
     'quote':   '"',
     'comment': '#',
 });
+var csvOutNoOptions = csv.createCsvFileWriter('/dev/null');
 var csvOut = csv.createCsvFileWriter('/dev/null', { 'encoding': 'utf8' });
 
 var lines   = 0;
