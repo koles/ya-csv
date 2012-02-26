@@ -1,5 +1,11 @@
+var sys;
+try {
+  sys    = require('util'); 
+} catch (e) {
+  sys    = require('sys');
+}
+
 var csv    = require('../lib/ya-csv'),
-    sys    = require('sys'),
     assert = require('assert');
 
 var testFile = __dirname + '/crazy.csv';
