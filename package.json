@@ -1,7 +1,7 @@
 {
   "name": "ya-csv",
   "description": "CSV parser and generator for Node.js",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "keywords": [ "node", "csv", "parser" ],
   "author": "Pavel Kolesnikov <pavel.kolesnikov@gmail.com>",
   "licenses": [
@@ -14,7 +14,6 @@
   "bugs": { "url": "http://github.com/koles/ya-csv/issues" },
   "directories": { "lib": "./lib", "test": "./test" },
   "bin" : { "csv-reshuffle" : "./bin/reshuffle.js" },
-  "os": [ "linux", "darwin" ],
   "dependencies": {},
   "engines": { "node":  ">=0.2.3" },
   "main": "lib/ya-csv"
