@@ -1,11 +1,11 @@
 var csv  = require('../lib/ya-csv'),
-    sys  = require('sys'),
+    util = require('util'),
     fs = require('fs');
 
-sys.debug('start');
+util.debug('start');
 
 if (process.argv.length < 3) {
-    sys.error("Usage: node " + process.argv[1] + " <csv file>");
+    util.error("Usage: node " + process.argv[1] + " <csv file>");
     process.exit(1);
 }
 
@@ -19,13 +19,13 @@ var lines   = 0;
 var columns = 0;
 
 csvIn.addListener('end', function() {
-    sys.debug('end');
-    sys.debug(columns + ' columns, ' + lines + ' lines');
+    util.debug('end');
+    util.debug(columns + ' columns, ' + lines + ' lines');
 });
 
 csvIn.addListener('error', function(e) {
-    sys.debug('error');
-    sys.debug(e);
+    util.debug('error');
+    util.debug(e);
 });
 
 csvIn.addListener('data', function(data) {
@@ -37,7 +37,7 @@ var file = process.argv[2];
 var fileIn = fs.createReadStream(file, {flags: 'r', bufferSize: 10});
 fileIn.setEncoding('utf8');
 fileIn.on('data', function(data) {
-  sys.debug(data);
+  util.debug(data);
   csvIn.parse(data);
 });
 fileIn.on('end', function(data) {

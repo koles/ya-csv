@@ -2,7 +2,7 @@ var sys;
 try {
   sys    = require('util'); 
 } catch (e) {
-  sys    = require('sys');
+  util = require('util');
 }
 
 var csv    = require('../lib/ya-csv'),
@@ -26,7 +26,7 @@ var columns = 0;
 
 csvIn.addListener('end', function() {
     assert.strictEqual(expectedRows, lines, "Wrong number of records");
-    sys.debug(columns + ' columns, ' + lines + ' lines');
+    util.debug(columns + ' columns, ' + lines + ' lines');
 });
 
 csvIn.addListener('data', function(data) {
