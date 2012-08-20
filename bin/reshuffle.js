@@ -1,11 +1,11 @@
 var csv = require('../lib/ya-csv'),
-    sys = require('sys');
+    util = require('util');
 
 var reader = csv.createCsvStreamReader(process.openStdin(), { columnsFromHeader: true });
 var writer = csv.createCsvStreamWriter(process.stdout);
 
 if (process.argv.length < 3) {
-    sys.error("Usage: " + process.argv[0] + " " + process.argv[1] + " <output columns>");
+    util.error("Usage: " + process.argv[0] + " " + process.argv[1] + " <output columns>");
     process.exit(1);
 }
 
