@@ -1,8 +1,8 @@
-var sys;
+var util;
 try {
-  sys    = require('util'); 
+  util    = require('util'); 
 } catch (e) {
-  util = require('util');
+  util = require('sys');
 }
 
 var csv    = require('../lib/ya-csv'),
