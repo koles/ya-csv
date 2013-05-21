@@ -77,14 +77,14 @@ Parsing an upload as the data comes in, using node-formidable:
     upload_form.onPart = function(part) {
         if (!part.filename) { upload_form.handlePart(part); return }
 
-        var reader = csv.createCsvFileReader({'comment': '#'});
+        var reader = csv.createCsvStreamReader({'comment': '#'});
         reader.addListener('data', function(data) {
             saveRecord(data);
         });
 
         part.on('data', function(buffer) {
             // Pipe incoming data into the reader.
-            reader.parse(buffer);
+            reader.parse(buffer.toString());
         });
         part.on('end', function() {
             reader.end()
