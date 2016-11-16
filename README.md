@@ -2,6 +2,12 @@
 
 Event based CSV parser and writer for Node.js suitable for processing large CSV streams.
 
+  * Designed for high performance and ease of use.
+  * RFC 4180 compliance with optional extensions.
+  * Zero dependencies.
+
+## Example
+
     // A simple echo program:
     var csv = require('ya-csv');
 
