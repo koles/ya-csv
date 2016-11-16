@@ -26,7 +26,6 @@ var columns = 0;
 
 csvIn.addListener('end', function() {
     assert.strictEqual(expectedRows, lines, "Wrong number of records");
-    util.debug(columns + ' columns, ' + lines + ' lines');
 });
 
 csvIn.addListener('data', function(data) {
