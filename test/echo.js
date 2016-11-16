@@ -32,3 +32,7 @@ csvIn.addListener('data', function(data) {
     columns += data.length;
     csvOut.writeRecord(data);
 });
+
+csvIn.addListener('error', function(e) {
+    util.debug(e);
+});

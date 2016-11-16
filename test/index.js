@@ -30,6 +30,7 @@ csvIn.addListener('end', function() {
 
 csvIn.addListener('data', function(data) {
     lines++;
+    assert.notStrictEqual(typeof data[data.length - 1], "undefined");
     data.push(1);
     csvOut.writeRecord(data);
     assert.strictEqual(expectedColsPerRow + 1, data.length,
