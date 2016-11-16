@@ -17,6 +17,10 @@ Event based CSV parser and writer for Node.js suitable for processing large CSV 
     reader.addListener('data', function(data) {
         writer.writeRecord(data);
     });
+    
+    reader.addListener('error', function(e) {
+        console.error('Oops!');
+    });
 
 ## Installation
 
