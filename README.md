@@ -133,6 +133,6 @@ https://tools.ietf.org/html/rfc4180
   * `escape` - character used to escape the `quote` inside a
     field, default: '"' (double quote). If you are changing `quotechar`
     you may want to change the `escape` to the same value
-  * escapeFormulas - boolean value indiciating whether the parser should
+  * `escapeFormulas` - boolean value indiciating whether the parser should
     escape '=', '+' and '-' with an apostrophe to prevent some programs
     from treating the content as an executable formula, default: `false`
