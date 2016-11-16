@@ -90,3 +90,40 @@ Parsing an upload as the data comes in, using node-formidable:
             reader.end()
         }
     }
+
+## CsvReader Options
+
+Note: the defaults are based on the values from RFC 4180 -
+https://tools.ietf.org/html/rfc4180
+
+  * `separator` - field separator (delimiter), default: ',' (comma)
+  * `quote` - the character used to enclose fields with white space
+    characters, escaping etc., default: '"' (double quote)
+  * `escape` - character used to escape the `quote` inside a
+    field, default: '"' (double quote). If you are changing `quotechar`
+    you may want to change the `escape` to the same value
+  * `comment` - parser will ignore this character and all following
+    characters on the same line
+    the line, default: none
+  * `columnNames` - an array of column names, if used, the rows sent to
+    the `data` listener are represented as hashes instead of arrays,
+    default: none
+  * `columnsFromHeader` - boolean value indicating whether the first row
+    should be interpreted as a list of header names. If used, the rows
+    sent to the `data` listener are represented as hashes instead of arrays,
+    default: `false`
+  * `nestedQuotes` - boolean value indicating whether the parser should
+    try to process a file with unescaped quote characters inside fields,
+    default: `false`
+
+## CSvWriter Options
+
+  * `separator` - field separator (delimiter), default: ',' (comma)
+  * `quote` - the character used to enclose fields with white space
+    characters, escaping etc., default: '"' (double quote)
+  * `escape` - character used to escape the `quote` inside a
+    field, default: '"' (double quote). If you are changing `quotechar`
+    you may want to change the `escape` to the same value
+  * escapeFormulas - boolean value indiciating whether the parser should
+    escape '=', '+' and '-' with an apostrophe to prevent some programs
+    from treating the content as an executable formula, default: `false`
