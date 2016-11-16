@@ -115,6 +115,9 @@ https://tools.ietf.org/html/rfc4180
   * `nestedQuotes` - boolean value indicating whether the parser should
     try to process a file with unescaped quote characters inside fields,
     default: `false`
+  * `flags` - a string with flags to be passed through to
+    createRead/WriteStream (only supported via `createCsvFileReader`
+    and `createCsvFileWriter` methods), default: none
 
 ## CSvWriter Options
 
