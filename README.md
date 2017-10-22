@@ -54,7 +54,7 @@ reader.addListener('data', function(data) {
 });
 ```
 
-Return data in objects rather than arrays: either by grabbing the column names form the header row (first row is not passed to the `data` listener):
+Return data in objects rather than arrays: either by grabbing the column names from the header row (first row is not passed to the `data` listener):
 ```js
 var reader = csv.createCsvFileReader('data.csv', { columnsFromHeader: true });
 reader.addListener('data', function(data) {
