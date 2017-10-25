@@ -26,6 +26,11 @@ var columns = 0;
 
 csvIn.addListener('end', function() {
     assert.strictEqual(expectedRows, lines, "Wrong number of records");
+    csvOut.close();
+});
+
+csvOut.addListener('close', function(){
+    console.log('Closed the writer');
 });
 
 csvIn.addListener('data', function(data) {

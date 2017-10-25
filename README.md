@@ -104,7 +104,7 @@ upload_form.onPart = function(part) {
     });
     part.on('end', function() {
         reader.end()
-    }
+    })
 }
 ```
 
