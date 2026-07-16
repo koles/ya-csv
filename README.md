@@ -147,3 +147,20 @@ https://tools.ietf.org/html/rfc4180
   * `escapeFormulas` - boolean value indicating whether the parser should
     escape '=', '+' and '-' with an apostrophe to prevent some programs
     from treating the content as an executable formula, default: `false`
+
+## Benchmarking
+
+`bench/` contains a small throughput benchmark and a comparison tool with
+zero extra dependencies:
+
+```bash
+npm run bench            # benchmark the working tree
+npm run bench:compare    # benchmark the working tree against a base commit (default: HEAD)
+node bench/compare.js --base=v1.0.0 --threshold=15
+```
+
+`bench:compare` checks out the base commit into a throwaway git worktree,
+runs the same benchmark against both trees, and reports the change per
+fixture (exiting non-zero if any fixture regresses past `--threshold`
+percent). A GitHub Actions workflow runs it on every PR touching `lib/` or
+`bench/`.
