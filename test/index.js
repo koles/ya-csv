@@ -8,7 +8,7 @@ try {
 var csv    = require('../lib/ya-csv'),
     assert = require('assert');
 
-var testFile = __dirname + '/crazy.csv';
+var testFile = __dirname + '/test.csv';
 var expectedRows = 7;
 var expectedColsPerRow = 4;
 
