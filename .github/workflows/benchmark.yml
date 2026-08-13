@@ -1,0 +1,31 @@
+name: Performance benchmark
+
+on:
+  pull_request:
+    paths:
+      - 'lib/**'
+      - 'bench/**'
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Full history needed so bench/compare.js can check out the base
+          # commit into a worktree.
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # PRs are tested against their merge base rather than the PR's own
+      # first commit, so unrelated commits on main landing during PR review
+      # don't get blamed on this change.
+      - name: Determine base commit
+        id: base
+        run: echo "sha=$(git merge-base origin/${{ github.base_ref }} HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Run benchmark comparison
+        run: node bench/compare.js --base=${{ steps.base.outputs.sha }} --threshold=15
