@@ -21,7 +21,8 @@ var TESTS = [
     'writer.js',
     'parse-edge-cases.js',
     'escape-chunk-boundary.js',
-    'pause.js'
+    'pause.js',
+    'chunk-size-sweep.js'
 ];
 
 var KNOWN_FAILING = ['index.js', 'empty-quote.js'];
