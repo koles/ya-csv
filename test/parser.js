@@ -1,4 +1,4 @@
-// test/index.js only checks row/column *counts* for crazy.csv - it would
+// test/index.js only checks row/column *counts* for test.csv - it would
 // pass even if every field's actual content were wrong, as long as the
 // counts came out right. This test asserts the exact parsed content
 // instead, field by field, for every row - including the tricky ones:
@@ -9,7 +9,7 @@
 var csv = require('../lib/ya-csv'),
     assert = require('assert');
 
-var testFile = __dirname + '/crazy.csv';
+var testFile = __dirname + '/test.csv';
 
 var expected = [
     ['Header1', 'Header 2', 'Header "3"', 'Header 4'],
