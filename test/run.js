@@ -5,12 +5,14 @@
 // A few files under test/ are intentionally excluded:
 //   - echo.js, stream.js: CLI demo scripts (they take a CSV file path as
 //     an argv, not test files).
-//   - index.js, empty-quote.js: fail on current Node under this repo's
-//     legacy stream usage (ERR_STREAM_DESTROYED writing to /dev/null, and
-//     a writeStream mock whose expected output no longer matches the
-//     writer's behavior). Both predate this test runner and are unrelated
-//     to the lib/ changes in #55/#56 - noted here so a real regression
-//     doesn't get lost in pre-existing noise.
+//   - empty-quote.js: fails on current Node - its writeStream mock strips
+//     every comma from the written output (not just data-level commas),
+//     which defeats its own `expected` value regardless of Node version.
+//     Predates this test runner - noted here so a real regression doesn't
+//     get lost in pre-existing noise. index.js used to be excluded for a
+//     similar-looking but distinct reason (ERR_STREAM_DESTROYED writing to
+//     /dev/null) - that was CsvWriter.close() calling destroy() before
+//     end() on a real file stream, fixed alongside writer-roundtrip.js.
 var path = require('path');
 var execFileSync = require('child_process').execFileSync;
 
@@ -22,10 +24,12 @@ var TESTS = [
     'parse-edge-cases.js',
     'escape-chunk-boundary.js',
     'pause.js',
-    'chunk-size-sweep.js'
+    'chunk-size-sweep.js',
+    'index.js',
+    'writer-roundtrip.js'
 ];
 
-var KNOWN_FAILING = ['index.js', 'empty-quote.js'];
+var KNOWN_FAILING = ['empty-quote.js'];
 
 var failures = [];
 
