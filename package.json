@@ -16,6 +16,7 @@
   "bin" : { "csv-reshuffle" : "./bin/reshuffle.js" },
   "dependencies": {},
   "scripts": {
+    "test": "node test/run.js",
     "bench": "node bench/generate-all-fixtures.js && node bench/run.js",
     "bench:compare": "node bench/compare.js"
   },
