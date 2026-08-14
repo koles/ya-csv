@@ -7,8 +7,8 @@ var path = require('path');
 var csv = require('../lib/ya-csv');
 
 var FIXTURES_DIR = path.join(__dirname, 'fixtures');
-var WARMUP_RUNS = 2;
-var MEASURED_RUNS = 5;
+var WARMUP_RUNS = 3;
+var MEASURED_RUNS = 11;
 
 function parseFile(file) {
     return new Promise(function (resolve, reject) {
@@ -38,17 +38,24 @@ async function timeFile(file) {
         samples.push(Number(end - start) / 1e6); // ms
     }
 
+    // Minimum, not median or mean: for a CPU-bound loop like this, outside
+    // interference (GC, OS scheduling, other processes) only ever adds
+    // delay to a sample, it never makes one faster than the code's true
+    // steady-state speed. The minimum across enough samples is the most
+    // repeatable estimate of that speed - median/mean both let noisy
+    // samples pull the result around, which is what was causing
+    // false-positive regressions on the fastest (smallest) fixtures.
     samples.sort(function (a, b) { return a - b; });
-    var median = samples[Math.floor(samples.length / 2)];
+    var min = samples[0];
 
     return {
         file: path.basename(file),
         sizeBytes: sizeBytes,
         rows: rowCount,
         samplesMs: samples,
-        medianMs: median,
-        rowsPerSec: Math.round(rowCount / (median / 1000)),
-        mbPerSec: +((sizeBytes / 1024 / 1024) / (median / 1000)).toFixed(2)
+        minMs: min,
+        rowsPerSec: Math.round(rowCount / (min / 1000)),
+        mbPerSec: +((sizeBytes / 1024 / 1024) / (min / 1000)).toFixed(2)
     };
 }
 
