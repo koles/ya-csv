@@ -85,12 +85,12 @@ function main() {
     currentResult.results.forEach(function (cur) {
         var base = baseByFile[cur.file];
         if (!base) return; // fixture didn't exist in base commit
-        var deltaPct = ((cur.medianMs - base.medianMs) / base.medianMs) * 100;
+        var deltaPct = ((cur.minMs - base.minMs) / base.minMs) * 100;
         worstRegressionPct = Math.max(worstRegressionPct, deltaPct);
         rows.push({
             file: cur.file,
-            baseMs: base.medianMs,
-            curMs: cur.medianMs,
+            baseMs: base.minMs,
+            curMs: cur.minMs,
             deltaPct: deltaPct
         });
     });

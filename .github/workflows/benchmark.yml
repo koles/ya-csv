@@ -2,9 +2,6 @@ name: Performance benchmark
 
 on:
   pull_request:
-    paths:
-      - 'lib/**'
-      - 'bench/**'
 
 jobs:
   benchmark:
